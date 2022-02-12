@@ -8,10 +8,11 @@ locals {
 }
 
 module "cloudfront_s3_website_oudam_es" {
-  source                      = "./modules/terraform-aws-cloudfront-s3-website"
+  source                      = "oudams/cloudfront-s3-website/aws"
+  version                     = "1.2.4"
   hosted_zone                 = local.domain
   domain_name                 = local.domain
-  acm_certificate_domain      = local.domain #aws_acm_certificate.oudam_es_ssl_cert.domain_name
+  acm_certificate_domain      = local.domain
   lambda_function_association = {
     event_type : "origin-request"
     include_body : false
